@@ -119,7 +119,7 @@ def train(
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 
     training_args = TrainingArguments(
-        output_dir="uc1-uc2-model",
+        output_dir=model_id,
         learning_rate=learning_rate,
         per_device_train_batch_size=32,
         per_device_eval_batch_size=32,
