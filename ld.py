@@ -1,13 +1,22 @@
 import uuid
 
 import pytz
+from huggingface_hub import CommitInfo
 from rdflib import Graph, URIRef, Literal, Namespace
 import git
 from rdflib.namespace import RDF, XSD
 import datetime
 
 
-def write_airo_ai_model(hub_model_id, commit_info, results) -> Graph:
+def write_airo_ai_model(hub_model_id: str, commit_info: CommitInfo, results: dict) -> Graph:
+    """
+    Write AIRO AI Model RDF graph based on the LBLOD AI Blueprint.
+
+    Args:
+        hub_model_id (str): The model ID on Hugging Face Hub.
+        commit_info (CommitInfo): The commit information from HF Git (after model push).
+        results (dict): A dictionary of evaluation metrics.
+    """
     g = Graph()
     AIRO = Namespace('https://w3id.org/airo#')
     DQV = Namespace('http://www.w3.org/ns/dqv#')
